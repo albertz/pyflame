@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include <elf.h>
+//#include <elf.h>
 
 #include <limits.h>
 #include <sstream>
@@ -27,6 +27,17 @@
 #include "./namespace.h"
 
 #if USE_ELF64
+struct ehdr_t { long e_phoff, e_phentsize, e_shoff, e_shentsize, e_shstrndx; };
+struct shdr_t { long sh_offset; };
+
+//#define ehdr_t long
+#define phdr_t long
+//#define shdr_t long
+#define dyn_t long
+#define sym_t long
+#define addr_t long
+#define ARCH_ELFCLASS 0
+#elif USE_ELF64
 #define ehdr_t Elf64_Ehdr
 #define phdr_t Elf64_Phdr
 #define shdr_t Elf64_Shdr

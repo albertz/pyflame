@@ -10,9 +10,9 @@ m4_pattern_forbid([^PKG_])
 
 # Fail early if the user tries to build for BSD/OS X
 AC_CANONICAL_HOST
-AS_CASE([$host_os],
-        [linux-gnu*], [],
-        [AC_MSG_ERROR([Pyflame can only be built for Linux hosts])])
+#AS_CASE([$host_os],
+#        [linux-gnu*], [],
+#        [AC_MSG_ERROR([Pyflame can only be built for Linux hosts])])
 
 enable_threads=no
 AS_IF([test x"$host_cpu" = xx86_64],
@@ -46,8 +46,8 @@ AM_PROG_AR
 
 LT_INIT
 
-# Ensure Linux kernel headers are present
-AC_CHECK_HEADERS([linux/ptrace.h], [], [AC_MSG_ERROR([Linux kernel headers missing])])
+# Ensure ptrace headers are present
+AC_CHECK_HEADERS([sys/ptrace.h], [], [AC_MSG_ERROR([ptrace headers missing])])
 
 AC_LANG_PUSH([C++])
 

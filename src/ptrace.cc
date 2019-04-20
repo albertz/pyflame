@@ -33,6 +33,12 @@
 
 #include "./exc.h"
 
+#if defined(__APPLE__)
+#define PTRACE_TRACEME PT_TRACE_ME
+#define PTRACE_ATTACH PT_ATTACHEXC
+#define PTRACE_DETACH PT_DETACH
+#endif
+
 namespace pyflame {
 int DoWait(pid_t pid, int options) {
   int status;

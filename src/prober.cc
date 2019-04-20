@@ -341,7 +341,7 @@ int Prober::InitiatePtrace(char **argv) {
       // least had a chance to run exec.
       pid_t child = waitpid(0, nullptr, 0);
       assert(child == pid_);
-      PtraceSetOptions(pid_, PTRACE_O_TRACEEXEC);
+      //PtraceSetOptions(pid_, PTRACE_O_TRACEEXEC);
       PtraceCont(pid_);
       int status = 0;
       while (!SawEventExec(status)) {

@@ -12,4 +12,11 @@ static inline int setns(int fd, int nstype)
     return -1;
 #endif
 }
+
+#elif defined(__APPLE__)
+static inline int setns(int fd, int nstype)
+{
+    errno = ENOSYS;
+    return -1;
+}
 #endif
